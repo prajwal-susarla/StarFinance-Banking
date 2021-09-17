@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand">
+      <img src="" alt="">
+      <strong>Star Gold</strong>
+    </a>
+    <form class="d-flex">
+        <button class="btn btn-outline-light" *ngIf=!isLoggedin routerLink="login">Login</button>
+
+        <button class="btn btn-outline-light" *ngIf="isLoggedin && iskycverified && isUser" routerLink="loan">Loan</button>
+
+        <button class="btn btn-outline-light" *ngIf="isLoggedin && !iskycverified && isUser" routerLink="kyc">KYC</button>
+        
+        <button class="btn btn-outline-light" (click)="logout()" *ngIf=isLoggedin >Logout</button>
+
+        <button class="btn btn-outline-light" routerLink="signup" *ngIf=!isLoggedin>signup</button>
+    </form>
+    </div>
+</nav>
+
+<body class="wrapper"></body>
+    
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

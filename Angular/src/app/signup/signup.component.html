@@ -1,0 +1,139 @@
+<form
+    *ngIf="!isLoggedIn"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm" 
+    novalidate
+>
+    <div class="container register fadeInDown">
+        <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+                <img src="assets/img/logo.png" alt=""/>
+                <h2>Welcome</h2>
+            </div>
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link " id="home-tab" data-toggle="tab" [routerLink]="[ '/', 'kyc' ]"  role="tab" aria-controls="signup" aria-selected="false">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" [routerLink]="[ '/', 'singup' ]"  role="tab" aria-controls="signup" aria-selected="true">Signup</a>  
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Apply as a User</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text"
+                                     class="form-control fadeIn second"
+                                     name="signup" 
+                                     id="floatingInput"
+                                     [(ngModel)]="form.firstname" required
+                                     #firstname="ngModel"
+                                     placeholder="First Name *" 
+                                     />
+                                     <label for="floatingInput">FirstName *</label>
+                                     <div
+                                     class="alert alert-danger"
+                                     role="alert"
+                                     *ngIf="firstname.errors && f.submitted"
+                                     >
+                                       Firstname is required!
+                                     </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control fadeIn second" name="signup" [(ngModel)]="form.lastname" required
+                                    #lastname="ngModel" id="floatingInput" placeholder="Last Name *"/>
+                                    <label for="floatingInput">LastName *</label>
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="lastname.errors && f.submitted"
+                                    >
+                                    Lastname is required!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control fadeIn second" id="floatingInput" name="signup" 
+                                    [(ngModel)]="form.username" required
+                                    #username="ngModel" placeholder="User Name *"/>
+                                    <label for="floatingInput">UserName *</label>
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="username.errors && f.submitted"
+                                    >
+                                    Username is required!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control fadeIn second" id="floatingInput" name="signup" [(ngModel)]="form.password"
+                                    required
+                                    minlength="6"
+                                    #password="ngModel" 
+                                    placeholder="Password *" />
+                                    <label for="floatingInput">Password *</label>
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="password.errors && f.submitted"
+                                    >
+                                    <div *ngIf="password.errors.required">Password is required</div>
+                                        <div *ngIf="password.errors.minlength">
+                                            Password must be at least 6 characters
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control fadeIn second"  [(ngModel)]="form.email" required
+                                    #email="ngModel" name="signup" id="floatingInput" placeholder="Your Email *"/>
+                                    <label for="floatingInput">Email *</label>
+
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="email.errors && f.submitted"
+                                    >
+                                    email is required!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" minlength="10" maxlength="10" id="floatingInput" name="signup" class="form-control fadeIn second"[(ngModel)]="form.phone" required
+                                    #phone="ngModel" placeholder="Your Phone *"/>
+                                    <label for="floatingInput">Mobile Number *</label>
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="phone.errors && f.submitted"
+                                    >
+                                    Mobile number is required!
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <input type="submit" class="btnRegister fadeIn fourth"  value="Register"/>
+                            <div class="form-group">
+                                <div
+                                  class="alert alert-danger"
+                                  role="alert"
+                                  *ngIf="f.submitted && isLoginFailed"
+                                >
+                                  singup failed: {{ errorMessage }}
+                                </div>
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>

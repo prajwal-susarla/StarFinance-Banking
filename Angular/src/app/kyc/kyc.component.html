@@ -1,0 +1,145 @@
+<form
+    *ngIf="isLoggedIn"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm" 
+    novalidate
+>
+    <div class="container register fadeInDown" *ngIf="!isKycVerified">
+        <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+                <img src="assets/img/logo.png" alt=""/>
+                <h2>KYC VERIFICATION</h2>
+            </div>
+            <div class="col-md-9 register-right">
+              <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link " id="home-tab" data-toggle="tab" [routerLink]="[ '/', 'Loan' ]"  role="tab" aria-controls="kyc" aria-selected="false">Loan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" (click)="logout()" role="tab" aria-controls="kyc" aria-selected="true">LogOut</a>  
+                </li>
+            </ul> -->
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">KYC VERIFICATION</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text"
+                                     class="form-control fadeIn second"
+                                     id="floatingInput"
+                                     name="kyc" 
+                                      minlength="10"
+                                      [(ngModel)]="kyc.aadhar_number" required
+                                      #aadhar_number="ngModel"
+                                      placeholder="AadhaarNumber"
+                                     />
+                                     <label for="floatingInput">AadhaarNumber</label>
+                                     <div
+                                      class="alert alert-danger"
+                                      role="alert"
+                                      *ngIf="aadhar_number.errors && f.submitted"
+                                      >
+                                      <div *ngIf="aadhar_number.errors.required">AadhaarNumber is required</div>
+                                            <div *ngIf="aadhar_number.errors.minlength">
+                                              AadhaarNumber must be at  12 characters only
+                                            </div>
+                                </div>
+                                </div>
+
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control fadeIn second" id="floatingInput" name="kyc" 
+                                    minlength="10"
+                                    [(ngModel)]="kyc.drivers_license" 
+                                    required
+                                    #drivers_license="ngModel"
+                                    placeholder="Driver's Licence" />
+                                    <label for="floatingInput">Driver's Licence</label>
+                                    <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="drivers_license.errors && f.submitted"
+                                    >
+                                    <div *ngIf="drivers_license.errors.required">Driver's Licence is required</div>
+                                          <div *ngIf="drivers_license.errors.minlength">
+                                            driver's licence must be at  10 characters only
+                                          </div>
+                                  </div>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                  <input type="text" class="form-control fadeIn second" id="floatingInput" name="kyc" 
+                                  minlength="10"
+                                  required
+                                  [(ngModel)]="kyc.pan_number"
+                                  required
+                                  #pan_number="ngModel"
+                                  placeholder="PanNumber" />
+                                  <label for="floatingInput">Pan Number</label>
+                                  <div
+                                  class="alert alert-danger"
+                                  role="alert"
+                                  *ngIf="pan_number.errors && f.submitted"
+                                  >
+                                  <div *ngIf="pan_number.errors.required">PanNumber is required</div>
+                                        <div *ngIf="pan_number.errors.minlength">
+                                          PanNumber must be at  10 characters only
+                                        </div>
+                              </div>
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                <input type="text" class="form-control fadeIn second" id="floatingInput" name="kyc" 
+                                minlength="10"
+                                [(ngModel)]="kyc.passport_number" 
+                                required
+                                #passport_number="ngModel"
+                                placeholder="PassportNumber"
+                                />
+                                <label for="floatingInput">Passport Number</label>
+                                <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="passport_number.errors && f.submitted"
+                                >
+                                <div *ngIf="passport_number.errors.required">PassportNumber is required</div>
+                                      <div *ngIf="passport_number.errors.minlength">
+                                        PassportNumber must be at  10 characters only
+                                      </div>
+                              </div>
+                            </div>
+                                
+                                <input type="submit" class="btnRegister fadeIn fourth"  value="Verify"/>
+
+
+
+                                <div class="alert alert-success" *ngIf=" f.submitted && isKycVerified">
+                                  KYC Approved
+                                </div>
+
+                                <div class="form-group">
+                                  <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                    *ngIf="f.submitted && !isKycVerified"
+                                  >
+                                     Details Not Found : {{ errorMessage }}
+                                  </div>
+                                </div>
+                              
+                            
+                              
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

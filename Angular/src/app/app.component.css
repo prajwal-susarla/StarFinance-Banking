@@ -1,0 +1,18 @@
+/* :host {
+    display: block;
+    background-image: url('../assets/img/BG.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+.navbar{
+    background: -webkit-linear-gradient(left, #002366, #00c6ff);
+    /* background-color: #002366; */
+}
+.navbar-brand{
+    font-size: 25px;
+    padding: 5px;
+}
+.btn{
+    padding-left: 10px;
+    margin: 10px;
+}

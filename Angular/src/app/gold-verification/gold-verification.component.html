@@ -1,0 +1,214 @@
+<div class="btn-group pull-right">
+  <div class="btn-group">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-filter"></i>
+        Filter
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right">
+          <li><a type="button"  class="dropdown-item" (click)="onclickaccepted()" >Accepted</a></li>
+          <li><a type="button" class="dropdown-item" (click)="onclickrejected()">Rejected</a></li>
+          <li><a type="button" class="dropdown-item" (click)="onclickpending()">Pending</a></li>
+      </ul>
+    </div>
+</div>
+<div *ngFor="let i of loans">
+  
+  <div *ngIf="i.status==='bank_accepted' && (room=='pending' || room=='') && i.gold===goldtype">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Requests</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pending</button>
+        </div>
+        <h5><span><strong>Request ID : </strong>{{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong> {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name : {{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats : {{i.gold}}</td>
+      <td colspan="2">Type Of Account : {{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) : {{i.weight}}</td>
+      <td colspan="2">Account Number : {{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name : {{i.bought_from}}</td>
+      <td colspan="2">IFSC Code : {{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address : {{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name : {{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name : {{i.branch_name}}</td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<div class="form-floating mb-3">
+<input type="text" class="form-control" id="floatingInput" name="loans" 
+[(ngModel)]="i.rate" 
+#rate="ngModel"
+placeholder="Rate (in rupees)" />
+<label for="floatingInput">Rate</label>
+</div>
+
+<button type="button" class="btnRegister " (click)="onSubmit(i)"> Approve</button>
+<button type="button" class="btnRegisters "(click)="onreject(i)">Reject</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div *ngFor="let i of loans">
+  <div *ngIf="(i.status==='gold_accepted' || i.status==='user_accepted' || i.status==='user_rejected') && room=='accepted' && i.gold===goldtype ">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Requests</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{i.status}}</button>
+        </div>
+        <h5><span><strong>Request ID:</strong>{{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong> {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats :{{i.gold}}</td>
+      <td colspan="2">Type Of Account :{{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+      <td colspan="2">Account Number :{{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name :{{i.bought_from}}</td>
+      <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name :{{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name :{{i.branch_name}}</td>
+  </tr>
+  <tr>  
+    <td colspan="4"> Rate:<strong>{{i.rate}}</strong></td>  
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div *ngFor="let i of loans">
+  <div *ngIf="i.status==='gold_rejected' && room=='rejected' && i.gold===goldtype">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Requests</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-danger btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{i.status}}</button>
+        </div>
+        <h5><span><strong>Request ID:</strong>{{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong> {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats :{{i.gold}}</td>
+      <td colspan="2">Type Of Account :{{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+      <td colspan="2">Account Number :{{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name :{{i.bought_from}}</td>
+      <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name :{{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name :{{i.branch_name}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
