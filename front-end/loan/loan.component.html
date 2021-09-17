@@ -1,0 +1,202 @@
+<form
+
+name="form"
+(ngSubmit)="f.form.valid && onSubmit()"
+#f="ngForm" 
+novalidate
+>
+<div class="container register fadeInDown">
+    <div class="row">
+        <div class="col-md-3 register-left fadeInDown">
+            <img src="assets/img/logo.png" alt=""/>
+            <h3>Loan Application</h3>
+        </div>
+        <div class="col-md-9 register-right">          
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <h3 class="register-heading">KN Number:-<strong>{{kn}}</strong> </h3>
+                    
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-4">
+                              <select class="form-control"
+                              id="loan"
+                              [(ngModel)]="loan.gold" required
+                              name="loan"
+                              #gold="ngModel"
+                              placeholder="Gold in carats"
+                              >
+                             
+                              <option>8 Carat</option>
+                              <option>16 Carat</option>
+                              <option>24 Carat</option>
+                            </select>
+                            <label for="floatingInput">Gold *</label>
+                            
+                                 <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="gold.errors && f.submitted"
+                                >
+                                <div *ngIf="gold.errors.required">Gold is required</div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control fadeIn second" [(ngModel)]="loan.weight" 
+                                required
+                                name="loan"
+                                #weight="ngModel"id="loan" placeholder="Weight (in grams)"/>
+                                <label for="floatingInput">Weight *</label>
+                                <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="weight.errors && f.submitted"
+                                
+                                >
+                                <div *ngIf="weight.errors.required">Weight is required</div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control fadeIn second" id="loan"
+                                [(ngModel)]="loan.bought_from" required
+                                name="loan"
+                                #bought_from="ngModel" 
+                                placeholder="Jeweller's Name"/>
+                                <label for="floatingInput">Jeweller's Name *</label>
+                                <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="bought_from.errors && f.submitted"
+                                >
+                                <div *ngIf="bought_from.errors.required">Store You Purchased From is required</div>
+                                </div>
+                              
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control fadeIn second" id="loan" [(ngModel)]="loan.jeweler_name" required
+                                name="loan"
+                                #jeweler_name="ngModel" placeholder="Jeweller's Address"/>
+                                <label for="floatingInput">Jeweller's Address *</label>
+                                <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="jeweler_name.errors && f.submitted"
+                                >
+                                <div *ngIf="jeweler_name.errors.required">Jeweler's Name is required</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                              <div class="maxl">
+                                  <label class="radio inline"> 
+                                      <input id="current" type="radio" value="savings" name="gender" [(ngModel)]="loan.type" required 
+                                      #type="ngModel">
+                                      <span> Savings   </span> 
+                                  </label>
+
+                                  <label class="radio inline"> 
+                                      <input id="current" type="radio" value="current" name="gender" [(ngModel)]="loan.type" required
+                                      #type="ngModel">
+                                      <span> Current </span> 
+                                  </label>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control fadeIn second" id="loan"
+                                [(ngModel)]="loan.account_holder_name" required
+                                name="loan"
+                                #account_holder_name="ngModel"
+                                placeholder="Account Holder Name"/>
+                                <label for="floatingInput">Account Holder Name *</label>
+                                <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="account_holder_name.errors && f.submitted"
+                                >
+                                <div *ngIf="account_holder_name.errors.required">Account Holder Name is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control fadeIn second" id="loan"  
+                              [(ngModel)]="loan.ifsc_code" required
+                              name="loan"
+                              #ifsc_code="ngModel"
+                              placeholder="IFSC Code" />
+                              <label for="floatingInput">IFSC Code*</label>
+                              <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="ifsc_code.errors && f.submitted"
+                              >
+                              <div *ngIf="ifsc_code.errors.required">IFSC Code is required</div>
+                              </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control fadeIn second" id="loan"  
+                              [(ngModel)]="loan.account_number" required
+                              name="loan"
+                              #acc_number="ngModel"
+                              placeholder="Account Number" />
+                              <label for="floatingInput">Account Number *</label>
+                              <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="acc_number.errors && f.submitted"
+                              >
+                              <div *ngIf="acc_number.errors.required">Account Number is required</div>
+                              </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control fadeIn second" id="loan" 
+                              [(ngModel)]="loan.bank_name" required
+                              name="loan"
+                              #bank_name="ngModel"
+                              placeholder="Bank Name"  />
+                              <label for="floatingInput">Bank Name *</label>
+                              <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="bank_name.errors && f.submitted"
+                              >
+                              <div *ngIf="bank_name.errors.required">Bank Name is required</div>
+                              </div>
+                          </div>
+                            
+                        
+  
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control fadeIn second" id="loan"
+                            [(ngModel)]="loan.branch_name" required
+                            name="loan"
+                            #branch_name="ngModel"
+                            placeholder="Branch Name" />
+                            <label for="floatingInput">Branch Name *</label>
+                            <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="branch_name.errors && f.submitted"
+                            >
+                            <div *ngIf="branch_name.errors.required"> Name is required</div>
+                            </div>
+                          </div>
+                          </div>
+                          <div class="form-floating">
+                            <input type="submit" class="btnRegister fadeIn fourth"  value="Checkout"/>
+                          </div>
+                          
+                        
+                        
+                        </div>
+                      </div>
+                        </div>
+                        </div>    
+                      </div>
+                  </div>
+              </form>
+

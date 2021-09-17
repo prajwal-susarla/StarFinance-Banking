@@ -1,0 +1,425 @@
+<div class="btn-group pull-right">
+  <div class="btn-group">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-filter"></i>
+        Filter
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right">
+          <li><a type="button" class="dropdown-item" (click)="onclickprevious()">Previous</a></li>
+          <li><a type="button" class="dropdown-item" (click)="onclickpending()">Pending</a></li>
+      </ul>
+    </div>
+</div>
+<div *ngFor="let i of loans">
+  <div *ngIf="i.status==='gold_accepted' && room=='pending' && i.kn_number===kn">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown" *ngIf="isLoggedIn">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Status</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{i.status}}</button>
+        </div>
+        <h5><span><strong>Request ID :</strong> {{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong>  {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name : {{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats : {{i.gold}}</td>
+      <td colspan="2">Type Of Account : {{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) : {{i.weight}}</td>
+      <td colspan="2">Account Number : {{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name : {{i.bought_from}}</td>
+      <td colspan="2">IFSC Code : {{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address : {{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name : {{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name :{{i.branch_name}}</td>
+  </tr>
+  <tr>  
+<td colspan="4"> Rate:<strong>      {{i.rate}}</strong></td>  
+</tr>
+  </tbody>
+</table>
+
+<br>
+<button type="button" class="btnRegister " (click)="onSubmit(i)"> Approve</button>
+<button type="button" class="btnRegisters "(click)="onreject(i)">Reject</button>
+<div class="alert alert-danger"><p>Cancellation Fee : INR 500 </p></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div *ngFor="let i of loans">
+  <div *ngIf="(i.status==='pending' || i.status==='bank_accepted') && room=='pending' && i.kn_number===kn ">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Status</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='bank_accepted'">{{i.status}}</button>
+        </div>
+        <div class="pull-right"><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='pending'">{{i.status}}</button>
+        </div>
+        
+        <h5><span><strong>Request ID:</strong>{{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong> {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats :{{i.gold}}</td>
+      <td colspan="2">Type Of Account :{{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+      <td colspan="2">Account Number :{{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name :{{i.bought_from}}</td>
+      <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name :{{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name :{{i.branch_name}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div *ngFor="let i of loans">
+  <div *ngIf="(i.status==='bank_rejected' ||i.status==='gold_rejected' || i.status==='user_accepted' || i.status==='user_rejected') && room=='previous' && i.kn_number==kn">
+    <div class="register-right">
+      
+        <div class="container register fadeInDown">
+         
+          <div class="row">
+            <div class="col-md-3 register-left fadeInDown">
+              <img src="assets/img/logo.png" alt=""/>
+              <h3>Loan Status</h3>
+          </div>
+         
+      <div class="register-form">
+        <div class="pull-right"><button class="btn btn-danger btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='user_rejected' || i.status=='gold_rejected'||i.status=='bank_rejected'">{{i.status}}</button></div>
+        <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status==='user_accepted'">{{i.status}}</button></div>
+       
+        <h5><span><strong>Request ID:</strong>{{i.rid}}</span><br/></h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Gold Details</th>
+      <th colspan="2"scope="col">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>KN Number :</strong> {{i.kn_number}}</td>
+      <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gold In Carats :{{i.gold}}</td>
+      <td colspan="2">Type Of Account :{{i.type}}</td>
+   </tr>
+   <tr>
+      <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+      <td colspan="2">Account Number :{{i.account_number}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Name :{{i.bought_from}}</td>
+      <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+  </tr>
+  <tr>
+      <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+      <td colspan="2">Bank Name :{{i.bank_name}}</td>
+  </tr>
+  <tr>    
+      <td colspan="2">Image :</td>  
+      <td colspan="2">Branch Name :{{i.branch_name}}</td>
+  </tr>
+  <tr>  
+    <td colspan="4"> Rate:<strong>      {{i.rate}}</strong></td>  
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<div class="container bootdey" *ngIf="isLoggedIn">
+    <div class="panel panel-default panel-order">
+        <div class="panel-heading">
+          <div class="text-center">
+
+          
+            <strong class="pull-left">Loan Status</strong>
+          <div class="btn-group pull-right">
+                  <div class="btn-group">
+                      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-filter"></i>
+                        Filter
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                           <li><a type="button"  class="dropdown-item" (click)="onclickaccepted()" >Accepted</a></li> 
+                          <li><a type="button" class="dropdown-item" (click)="onclickprevious() ">Previous</a></li>
+                          <li><a type="button" class="dropdown-item" (click)="onclickpending() ">Pending</a></li>
+                      </ul>
+                    </div>
+          </div>  
+          
+            </div>
+        </div>
+        <br>
+        <hr>
+        
+
+
+        <div class="panel-body">
+            <div class="row" *ngFor="let i of loans">
+                <div class="col-md-11" *ngIf="i.status==='gold_accepted' && room=='pending' && i.kn_number===kn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{i.status}}</button>
+                            </div>
+                                 <div class="pull-right"><label class="label label-danger">Pending</label></div> 
+                            <span><strong>Request ID:{{i.rid}}</strong></span><br/>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" scope="col">Gold Details</th>
+                                    <th colspan="2"scope="col">Bank Details</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><strong>KN Number :</strong>{{i.kn_number}}</td>
+                                    <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Gold In Carats :{{i.gold}}</td>
+                                    <td colspan="2">Type Of Account :{{i.type}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+                                    <td colspan="2">Account Number :{{i.account_number}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Name :{{i.bought_from}}</td>
+                                    <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+                                    <td colspan="2">Bank Name :{{i.bank_name}}</td>
+                                </tr>
+                                <tr>    
+                                    <td colspan="2">Image :</td>  
+                                    <td colspan="2">Branch Name :{{i.branch_name}}</td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            <br/>
+                            <div class="pull-right"><p><strong>Cancellation Fee:INR 500</strong> </p></div>
+                            <button type="button" class="btn btn-success float-right btn-sm fas fa-check" (click)="onSubmit(i)"></button>
+                            <button type="button" class="btn btn-danger btn-sm fas fa-times"(click)="onreject(i)"></button>
+                            
+                        </div>
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         
+
+
+         <div class="panel-body">
+            <div class="row" *ngFor="let i of loans">
+                <div class="col-md-11" *ngIf="(i.status==='pending' || i.status==='bank_accepted') && room=='pending' && i.kn_number===kn ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='bank_accepted'">{{i.status}}</button>
+                            </div>
+                            <div class="pull-right"><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='pending'">{{i.status}}</button>
+                            </div> 
+                            
+                            <span *ngIf="i.status=='bank_accepted'"><strong>Request ID: {{i.rid}}</strong></span><br/>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" scope="col">Gold Details</th>
+                                    <th colspan="2"scope="col">Bank Details</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><strong>KN Number :</strong>{{i.kn_number}}</td>
+                                    <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Gold In Carats :{{i.gold}}</td>
+                                    <td colspan="2">Type Of Account :{{i.type}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+                                    <td colspan="2">Account Number :{{i.account_number}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Name :{{i.bought_from}}</td>
+                                    <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+                                    <td colspan="2">Bank Name :{{i.bank_name}}</td>
+                                </tr>
+                                <tr>    
+                                    <td colspan="2">Image :</td>  
+                                    <td colspan="2">Branch Name :{{i.branch_name}}</td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            <br/>
+                            
+                        </div>
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+
+
+         <div class="panel-body">
+            <div class="row" *ngFor="let i of loans">
+                <div class="col-md-11" *ngIf="(i.status==='bank_rejected' ||i.status==='gold_rejected' || i.status==='user_accepted' || i.status==='user_rejected') && room=='previous' && i.kn_number==kn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><button class="btn btn-danger btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status=='user_rejected' || i.status=='gold_rejected'||i.status=='bank_rejected'">{{i.status}}</button></div>
+                            <div class="pull-right"><button class="btn btn-success btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="i.status==='user_accepted'">{{i.status}}</button></div>
+                                 <div class="pull-right"><label class="label label-danger">Pending</label></div> 
+                            <span><strong>Request ID</strong>: {{i.rid}}</span><br/>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" scope="col">Gold Details</th>
+                                    <th colspan="2"scope="col">Bank Details</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><strong>KN Number :</strong>{{i.kn_number}}</td>
+                                    <td colspan="2">Account Holder Name :{{i.account_holder_name}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Gold In Carats :{{i.gold}}</td>
+                                    <td colspan="2">Type Of Account :{{i.type}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td colspan="2">Weight of Gold(in grams) :{{i.weight}}</td>
+                                    <td colspan="2">Account Number :{{i.account_number}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Name :{{i.bought_from}}</td>
+                                    <td colspan="2">IFSC Code :{{i.ifsc_code}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Store Address :{{i.jeweler_name}}</td>
+                                    <td colspan="2">Bank Name :{{i.bank_name}}</td>
+                                </tr>
+                                <tr>    
+                                    <td colspan="2">Image :</td>  
+                                    <td colspan="2">Branch Name :{{i.branch_name}}</td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            <br/>
+                        </div>
+                        <div class="col-md-12"></div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+    </div>
+</div>
+ -->
+
